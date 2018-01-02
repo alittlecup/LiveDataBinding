@@ -9,18 +9,19 @@ import java.util.Random;
 public class MainViewModel extends ViewModel {
 
     public final MutableLiveData<String> input = new MutableLiveData<>();
-    public final MutableLiveData<String> string = new MutableLiveData<>();
+    public final MutableLiveData<String> include_string = new MutableLiveData<>();
     Handler handler;
 
     public MainViewModel() {
         input.setValue("test");
-        string.setValue("string");
+        include_string.setValue("include_string");
         handler = new Handler();
     }
 
     public void onClick() {
         Random random = new Random();
         input.setValue(random.nextInt(100) + "");
+        include_string.setValue(random.nextInt(100) + "");
     }
 
     public void onAsyncClick() {
@@ -30,6 +31,7 @@ public class MainViewModel extends ViewModel {
             @Override
             public void run() {
                 input.setValue(random.nextInt(100) + "async");
+                include_string.setValue(random.nextInt(100) + "async");
             }
         }, 5000);
     }

@@ -2,7 +2,6 @@
 <layout>
 
     <data>
-
         <variable
             name="viewModel"
             type="com.example.huangbaole.databindinglivedata.MainViewModel" />
@@ -10,12 +9,14 @@
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
+
         <EditText
             android:id="@+id/include_edit"
             android:layout_width="match_parent"
-            android:text="@={viewModel.string}"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:text="@={viewModel.include_string}" />
 
     </LinearLayout>
 </layout>

@@ -3,6 +3,8 @@ package com.example.huangbaole.databindinglivedata;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
+import android.databinding.Observable;
+import android.databinding.OnRebindCallback;
 import android.databinding.ViewDataBinding;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        mBinding = DataBindingUtil.setContentView(this,R.layout.activity_main);
         mainViewModel= ViewModelProviders.of(this, new ViewModelProvider.NewInstanceFactory()).get(MainViewModel.class);
         mBinding.setViewModel(mainViewModel);
         mBinding.setLifecycleOwner(this);
@@ -42,6 +44,20 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("TAG", "afterTextChanged: " + "null");
                 }
                 Log.d(TAG, "afterTextChanged: "+mainViewModel.input.getValue());
+            }
+        });
+        mBinding.includeView.setLifecycleOwner(this);
+        mBinding.includeView.setViewModel(mainViewModel);
+        mBinding.addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
+            @Override
+            public void onPropertyChanged(Observable sender, int propertyId) {
+                Log.d(TAG, "onPropertyChanged: ");
+            }
+        });
+        mBinding.addOnRebindCallback(new OnRebindCallback() {
+            @Override
+            public void onBound(ViewDataBinding binding) {
+                super.onBound(binding);
             }
         });
     }
