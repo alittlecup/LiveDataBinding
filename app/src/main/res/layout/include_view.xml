@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.huangbaole.databindinglivedata.MainViewModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <EditText
+            android:id="@+id/include_edit"
+            android:layout_width="match_parent"
+            android:text="@={viewModel.string}"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</layout>

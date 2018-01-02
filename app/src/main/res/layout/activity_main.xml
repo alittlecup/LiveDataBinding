@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.huangbaole.databindinglivedata.MainViewModel"/>
+
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+        <TextView
+            android:layout_width="match_parent"
+            android:text="DataBinding Test"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:padding="20dp"
+            android:background="@color/colorPrimary"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/input"
+            android:layout_width="match_parent"
+            android:layout_margin="15dp"
+            android:hint="input"
+            android:text="@={viewModel.input}"
+            android:layout_height="wrap_content" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Change"
+            android:onClick="@{()->viewModel.onClick()}"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->viewModel.onAsyncClick()}"
+            android:text="ASYNC_CHANGE"/>
+
+
+
+    </LinearLayout>
+</layout>
