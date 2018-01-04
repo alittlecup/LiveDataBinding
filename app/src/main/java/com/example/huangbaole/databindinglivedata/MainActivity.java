@@ -16,13 +16,14 @@ import com.example.huangbaole.databindinglivedata.databinding.ActivityMainBindin
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding mBinding;
-     MainViewModel mainViewModel;
-    String TAG="TAG";
+    MainViewModel mainViewModel;
+    String TAG = "TAG";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mBinding = DataBindingUtil.setContentView(this,R.layout.activity_main);
-        mainViewModel= ViewModelProviders.of(this, new ViewModelProvider.NewInstanceFactory()).get(MainViewModel.class);
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        mainViewModel = ViewModelProviders.of(this, new ViewModelProvider.NewInstanceFactory()).get(MainViewModel.class);
         mBinding.setViewModel(mainViewModel);
         mBinding.setLifecycleOwner(this);
         mBinding.input.addTextChangedListener(new TextWatcher() {
@@ -43,22 +44,10 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     Log.d("TAG", "afterTextChanged: " + "null");
                 }
-                Log.d(TAG, "afterTextChanged: "+mainViewModel.input.getValue());
+                Log.d(TAG, "afterTextChanged: " + mainViewModel.input.getValue());
             }
         });
         mBinding.includeView.setLifecycleOwner(this);
         mBinding.includeView.setViewModel(mainViewModel);
-        mBinding.addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
-            @Override
-            public void onPropertyChanged(Observable sender, int propertyId) {
-                Log.d(TAG, "onPropertyChanged: ");
-            }
-        });
-        mBinding.addOnRebindCallback(new OnRebindCallback() {
-            @Override
-            public void onBound(ViewDataBinding binding) {
-                super.onBound(binding);
-            }
-        });
     }
 }
