@@ -8,16 +8,16 @@ import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import com.example.huangbaole.databindinglivedata.databinding.ActivityMainBinding
+import com.example.huangbaole.databindinglivedata.databinding.ActivityDataLiveBinding
 
-class MainActivity : AppCompatActivity() {
-    lateinit var mBinding: ActivityMainBinding
+class DataLiveActivity : AppCompatActivity() {
+    lateinit var mBinding: ActivityDataLiveBinding
     lateinit var mainViewModel: MainViewModel
     internal var TAG = "TAG"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBinding = DataBindingUtil.setContentView(this,R.layout.activity_main)!!
+        mBinding = DataBindingUtil.setContentView(this,R.layout.activity_data_live)!!
         mainViewModel = ViewModelProviders.of(this, ViewModelProvider.NewInstanceFactory()).get(MainViewModel::class.java)
         mBinding.viewModel = mainViewModel
         mBinding.setLifecycleOwner(this)
